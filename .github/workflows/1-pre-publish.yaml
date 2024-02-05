@@ -1,0 +1,50 @@
+name: Publish Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+          
+  build-and-test:
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Tests on Linux
+        if: runner.os == 'Linux'
+        run: xvfb-run -a npm test
+
+      - name: Run Tests on non-Linux OS
+        if: runner.os != 'Linux'
+        run: npm test
+
+  auto-tag:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.0
+        with:
+          github_token: ${{ secrets.TOKEN_GITHUB }}
+          default_bump: minor
+

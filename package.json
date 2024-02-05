@@ -1,0 +1,66 @@
+{
+	"name": "code-time-limiter",
+	"displayName": "Code Time Limiter",
+	"description": "Code Time Limiter is an extension for Visual Studio Code designed to help manage your coding time effectively.",
+	"version": "0.0.1",
+	"publisher": "kembec",
+	"engines": {
+		"vscode": "^1.86.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"icon": "images/icon.png",
+	"main": "src/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "codeTimeLimiter.toggleActivate",
+				"title": "Toggle Code Time Limiter Activation",
+				"category": "Code Time Limiter"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Code Time Limiter",
+			"properties": {
+				"codeTimeLimiter.enableAtStartup": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable Code Time Limiter at VSCode startup."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "vscode-test",
+		"deploy": "vsce publish"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/KembecDev/Code-Time-Limiter.git"
+	},
+	"author": "Kembec.com",
+	"license": "AGPL-3.0 license",
+	"bugs": {
+		"url": "https://github.com/KembecDev/Code-Time-Limiter/issues"
+	},
+	"homepage": "https://github.com/KembecDev/Code-Time-Limiter#readme",
+	"devDependencies": {
+		"@kembec/eslint-config": "^1.1.0",
+		"@types/mocha": "^10.0.6",
+		"@types/node": "18.x",
+		"@types/vscode": "^1.86.0",
+		"@vscode/test-cli": "^0.0.4",
+		"@vscode/test-electron": "^2.3.9",
+		"@vscode/vsce": "^2.23.0",
+		"eslint": "^8.56.0",
+		"sinon": "^17.0.1",
+		"typescript": "^5.3.3"
+	}
+}

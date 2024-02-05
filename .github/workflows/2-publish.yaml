@@ -1,0 +1,19 @@
+name: Publish to VS Code Marketplace
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+    - run: npm install
+    - run: npm install -g vsce
+    - run: vsce package
+    - run: vsce publish -p ${{ secrets.TOKEN_VSCE }}
