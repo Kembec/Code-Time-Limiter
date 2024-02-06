@@ -2,13 +2,34 @@
 	"name": "code-time-limiter",
 	"displayName": "Code Time Limiter",
 	"description": "Code Time Limiter is an extension for Visual Studio Code designed to help manage your coding time effectively.",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "kembec",
 	"engines": {
 		"vscode": "^1.86.0"
 	},
 	"categories": [
+		"Visualization",
+		"Education",
 		"Other"
+	],
+	"keywords": [
+	  "code time",
+	  "code",
+	  "codetime",
+	  "flow",
+	  "focus",
+	  "limite",
+	  "limiter",
+	  "metrics",
+	  "productivity",
+	  "standup",
+	  "time tracker",
+	  "time tracking",
+	  "time",
+	  "timer",
+	  "todo",
+	  "tracker",
+	  "tracking"
 	],
 	"activationEvents": [
 		"onStartupFinished"
